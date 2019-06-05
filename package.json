@@ -1,7 +1,7 @@
 {
-  "name": "gulp-etl-target-csv",
+  "name": "gulp-etl-filter",
   "version": "1.0.3",
-  "repository": "https://github.com/gulpetl/gulp-etl-target-csv",
+  "repository": "https://github.com/Saransh-kalra/gulp-etl-filter",
   "description": "Convert CSV files to JSON compatible with gulp-etl",
   "main": "dist/js/plugin.js",
   "typings": "dist/types/plugin.d.ts",
@@ -21,9 +21,12 @@
   ],
   "homepage": "https://gulpetl.com",
   "dependencies": {
+    "@types/gulp": "^4.0.6",
     "csv-stringify": "^5.3.0",
     "from2": "^2.3.0",
     "gulp-error-handle": "^1.0.1",
+    "gulp-etl-tap-csv": "^1.0.2",
+    "gulp-etl-target-csv": "^1.0.3",
     "loglevel": "^1.6.1",
     "pkginfo": "^0.4.1",
     "plugin-error": "^1.0.1",
