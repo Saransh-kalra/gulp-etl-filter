@@ -1,16 +1,3 @@
-// import {handlelines} from 'gulp-etl-handlelines'
-// const handleLine = (lineObj:any) => {        
-//     // return null to remove this line
-//     if (lineObj.record["price"] < 20000) {return null}
-    
-//     // return the changed lineObj
-//     return lineObj;
-// }
-
-// export function MyPlugin() {
-//     return handlelines({}, { transformCallback: handleLine })
-// };
-
 var through = require('through2');
 
 

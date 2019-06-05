@@ -2,7 +2,7 @@
   "name": "gulp-etl-filter",
   "version": "1.0.3",
   "repository": "https://github.com/Saransh-kalra/gulp-etl-filter",
-  "description": "Convert CSV files to JSON compatible with gulp-etl",
+  "description": "Filters JSON files with gulp-etl",
   "main": "dist/js/plugin.js",
   "typings": "dist/types/plugin.d.ts",
   "files": [
@@ -12,11 +12,11 @@
     "build": "tsc && tsc --module commonjs --outDir dist/lib",
     "test": "jest"
   },
-  "author": "peterl@sbcotton.com",
+  "author": "saransh.kalra@ttu.edu",
   "license": "MIT",
   "keywords": [
     "gulpplugin",
-    "csv",
+    "filter",
     "gulp-etl"
   ],
   "homepage": "https://gulpetl.com",
