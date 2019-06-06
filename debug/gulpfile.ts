@@ -21,7 +21,7 @@ export function processCsv(callback: any) {
         .on('data', function (file:any) {
             console.log('Done parsing ' + file.basename)
         })  
-        .pipe(MyPlugin())
+        .pipe(MyPlugin({ColumnName:"price",Operator:"<",Value:20000}))
         .pipe(rename({suffix:"-parsed", extname: ".ndjson" })) // rename to *-parsed.ndjson
         .on('data', function (file:any) {
             console.log('Done processing on ' + file.basename)

@@ -1,15 +1,20 @@
 var through = require('through2');
 
-
-function handleLine (lineObj:any) {        
-    // return null to remove this line
-    if (lineObj.record["price"] > 20000) {return null}
-    
-    // return the changed lineObj
-    return lineObj;
+export class ConfigObj {
+  ColumnName?: string;
+  Operator?: string;
+  Value?: number;
 }
 
-export function MyPlugin () {
+function handleLine (lineObj:any, columnName:string, operator:string, value:number) {        
+    // return the changed lineObj
+    if (eval(lineObj.record[columnName] + operator + value)) {return lineObj}
+    
+    // return null to remove this line
+    return null;
+}
+
+export function MyPlugin (configObj: ConfigObj) {
     function MyPlugin (file:any, enc:any, cb:any) {
       // strArray will hold file.contents, split into lines
       const strArray = (file.contents as Buffer).toString().split(/\r?\n/)
@@ -21,7 +26,8 @@ export function MyPlugin () {
           let tempLine
           if (strArray[dataIdx].trim() != "") {
             lineObj = JSON.parse(strArray[dataIdx])
-            tempLine = handleLine(lineObj)
+            //Operator?: string[] = ["<",">","<=",">=","==","!="];
+            tempLine = handleLine(lineObj, configObj.ColumnName + "", configObj.Operator + "", Number(configObj.Value));
             // add newline before every line execept the first
             if (dataIdx != "0") {
               resultArray.push('\n');
