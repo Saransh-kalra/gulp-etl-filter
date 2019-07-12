@@ -6,7 +6,7 @@ export class ConfigObj {
   Value?: number;
 }
 
-function handleLine (lineObj:any, columnName:string, operator:string, value:number) {        
+function handleLine (lineObj:any, columnName:string, operator:string, value:any) {        
     // return the changed lineObj
     if (eval(lineObj.record[columnName] + operator + value)) {return lineObj}
     
@@ -15,7 +15,7 @@ function handleLine (lineObj:any, columnName:string, operator:string, value:numb
 }
 
 export function MyPlugin (configObj: ConfigObj) {
-    function MyPlugin (file:any, enc:any, cb:any) {
+  function MyPlugin (file:any, enc:any, cb:any) {
       // strArray will hold file.contents, split into lines
       const strArray = (file.contents as Buffer).toString().split(/\r?\n/)
       let resultArray = [];
@@ -45,7 +45,14 @@ export function MyPlugin (configObj: ConfigObj) {
 
       // send the transformed file through to the next gulp plugin, and tell the stream engine that we're done with this file
       cb(null, file)
-    }
+  }
 
+  if(configObj.Operator == "<" || configObj.Operator == ">" || configObj.Operator == "<=" || configObj.Operator == ">=" || configObj.Operator == "==" || configObj.Operator == "!=") {
     return through.obj(MyPlugin);
+  }
+  else{
+    console.log("Try Again with a valid operator in [\"<\",\">\",\"<=\",\">=\",\"==\",\"!=\"]")
+    return null;
+  }
+    
 };
